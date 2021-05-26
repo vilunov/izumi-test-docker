@@ -20,6 +20,5 @@ object PluginTest extends PluginDef {
   }))
 
   include(ModuleMonix)
-
-  make[ExampleDocker.Container].fromResource(ExampleDocker.make[Task])
+  include(RedisModule)
 }
