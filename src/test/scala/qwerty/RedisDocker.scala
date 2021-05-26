@@ -13,9 +13,10 @@ object RedisClusterDocker extends ContainerDef {
 
   private val launchScript: String = Seq(
     "mkdir -p /override/",
-    "echo 'cluster-enabled yes' > /override/redis.conf",
-    "echo 'cluster-announce-ip 127.0.0.1' > /override/redis.conf",
-    s"redis-server --port $$${portPrimary.toEnvVariable} /override/redis.conf",
+    "echo 'cluster-enabled yes' >> /override/redis.conf",
+    "echo 'cluster-announce-ip 127.0.0.1' >> /override/redis.conf",
+//    s"redis-server --port $$${portPrimary.toEnvVariable} /override/redis.conf",
+    s"redis-server --port $$${portPrimary.toEnvVariable}",
   ).mkString("; ")
 
   override def config: Config = Config(
@@ -73,4 +74,3 @@ object RedisModule extends ModuleDef {
       cluster
   }
 }
-
